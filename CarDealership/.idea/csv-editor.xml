@@ -3,10 +3,10 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="\ID_inventoryReferenceID.csv">
+        <entry key="\ID_inventoryReferenceNum.csv">
           <value>
             <Attribute>
-              <option name="separator" value="," />
+              <option name="separator" value="|" />
             </Attribute>
           </value>
         </entry>

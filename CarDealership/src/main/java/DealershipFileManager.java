@@ -1,4 +1,5 @@
 import java.io.*;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class DealershipFileManager {
@@ -14,23 +15,24 @@ public class DealershipFileManager {
 
 
 
-    public Dealership getDealership (String dealerID, ArrayList<Dealership> dealerships) throws  IOException {
+    public Dealership getDealership (String dealerID, ArrayList<Dealership> dealerships) throws  IOException, NumberFormatException, ParseException {
         BufferedReader dealershipPuller = new BufferedReader(new FileReader("dealershipPuller.csv"));
         BufferedReader inventoryPuller = new BufferedReader(new FileReader("ID_inventoryReferenceNum.csv"));
+        String dealerLine = null;
+        String inventoryLine = null;
 
-        while (dealershipPuller.readLine() != null) {
-            String dealerLine = dealershipPuller.readLine();
+
+        while ((dealerLine = dealershipPuller.readLine()) != null) {
+            int dealerLineCounter = 0;
             String [] dealerParts = dealerLine.split("\\|");
-            while (inventoryPuller.readLine() != null) {
-                String inventoryLine = inventoryPuller.readLine();
-                String [] inventoryParts = inventoryLine.split("\\|");
-                if (dealerParts[0].equals(inventoryParts[0])) {
-                    //TODO
-                    // Need to construct a way to get inventory for the dealer and set the vehicle inventory for that dealer
-                }
+            if (dealerParts.length != 4 && !dealerLine.equals("ID|DEALERSHIP_NAME|DEALERSHIP_ADDRESS|DEALER_PHONE_NUMBER")) {
+                throw new ParseException("File Formatting Error In: dealershipPuller.csv At Line: " + dealerLineCounter, dealerLineCounter);
             }
-
+            Dealership temp = new Dealership(dealerParts[1], dealerParts[2], dealerParts[3]);
+            dealerships.add(temp);
         }
+
+
 
         return  null;//TODO
     }

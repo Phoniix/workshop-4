@@ -14,6 +14,34 @@ public class Dealership {
         this.INVENTORY = new ArrayList<Vehicle>();
     }
 
+    //Getters // ------------------------------------------------------------------------------------------------------
+    public String getNAME() {
+        return NAME;
+    }
+
+    public String getADDRESS() {
+        return ADDRESS;
+    }
+
+    public String getPHONE_NUMBER() {
+        return PHONE_NUMBER;
+    }
+
+
+    // Setters // -----------------------------------------------------------------------------------------------------
+
+    public void setNAME(String NAME) {
+        this.NAME = NAME;
+    }
+
+    public void setADDRESS(String ADDRESS) {
+        this.ADDRESS = ADDRESS;
+    }
+
+    public void setPHONE_NUMBER(String PHONE_NUMBER) {
+        this.PHONE_NUMBER = PHONE_NUMBER;
+    }
+
     // Methods // -----------------------------------------------------------------------------------------------------
     public ArrayList<Vehicle> dealership () {
         return null;
@@ -54,11 +82,12 @@ public class Dealership {
         return null;
     }
 
-    public void addVehicle (Vehicle vehicle) {INVENTORY.add(vehicle);
+    public void addVehicle (Vehicle vehicle) {
+        this.INVENTORY.add(vehicle);
     }
 
     public void removeVehicle (Vehicle vehicle) {
-
+        this.INVENTORY.remove(vehicle);
     }
 
     @Override

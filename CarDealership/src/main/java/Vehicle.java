@@ -9,6 +9,7 @@ public class Vehicle {
     private final int odometer;
     private final double price;
 
+    // Constructor // -------------------------------------------------------------------------------------------------
     Vehicle (int vin, int year, String make, String model, String vehicleType, String color, int odometer, double price) {
         this.vin = vin;
         this.year = year;
@@ -19,4 +20,31 @@ public class Vehicle {
         this.odometer = odometer;
         this.price = price;
         }
+
+    // Getters // Don't need setters because vehicle info will not change one input into system. ----------------------
+    public int getVin() {
+        return vin;
+    }
+    public int getYear() {
+        return year;
+    }
+    public String getMake() {
+        return make;
+    }
+    public String getModel() {
+        return model;
+    }
+    public String getVehicleType() {
+        return vehicleType;
+    }
+    public String getColor() {
+        return color;
+    }
+    public int getOdometer() {
+        return odometer;
+    }
+    public double getPrice() {
+        return price;
+    }
+
 }
