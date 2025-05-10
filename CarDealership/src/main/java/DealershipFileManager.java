@@ -8,7 +8,7 @@ public class DealershipFileManager {
     // Constructor // -------------------------------------------------------------------------------------------------
     private DealershipFileManager () {
         dealerships = new ArrayList<>();
-    }
+    } // TODO
 
 
 
@@ -20,15 +20,21 @@ public class DealershipFileManager {
 
         }
 
-        return  null;
+        return  null;//TODO
     }
 
-    public Dealership saveDealership () throws IOException {
-        BufferedWriter lilJOn = new BufferedWriter(new FileWriter("dealership.csv"));
+    public Dealership saveDealership (String dealerID) throws IOException {
+
+        try(BufferedWriter lilJOn = new BufferedWriter(new FileWriter("dealership_"+ dealerID +".csv", true));) {
+         lilJOn .write("");
+         lilJOn.flush();
+        } catch (IOException e) {
+            System.out.println("foobar.");
+        }
 
 
 
-        return null;
+        return null; //TODO
     }
 
 
