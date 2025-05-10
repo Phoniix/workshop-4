@@ -4,7 +4,6 @@ public class Dealership {
     private String NAME;
     private String ADDRESS;
     private String PHONE_NUMBER;
-
     private final ArrayList<Vehicle> INVENTORY;
 
     // Constructor // -------------------------------------------------------------------------------------------------
@@ -55,14 +54,16 @@ public class Dealership {
         return null;
     }
 
-    public void addVehicle (Vehicle vehicle) {
-        INVENTORY.add(vehicle);
+    public void addVehicle (Vehicle vehicle) {INVENTORY.add(vehicle);
     }
 
     public void removeVehicle (Vehicle vehicle) {
 
     }
 
-
+    @Override
+    public String toString() {
+        return NAME + "\\|" + ADDRESS + "\\|" + PHONE_NUMBER +"\\|" + INVENTORY;
+    }
 
 }
