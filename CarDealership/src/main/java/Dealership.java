@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class Dealership {
@@ -77,9 +79,13 @@ public class Dealership {
         return null;
     }
 
-    public ArrayList<Vehicle> getAllVehicles (double min, double max) {
-
-        return null;
+    public ArrayList<Vehicle> getAllVehicles (int dealerID) throws IOException, ParseException {
+        this.INVENTORY.clear();
+        ArrayList<Vehicle> currentInventory = DealershipFileManager.getDealership(dealerID);
+        for (Vehicle vehicle : currentInventory) {
+            this.INVENTORY.add(vehicle);
+        }
+        return currentInventory;
     }
 
     public void addVehicle (Vehicle vehicle) {

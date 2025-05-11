@@ -4,7 +4,7 @@ public class READ_ME_NOAH {
     // File input / output system on the DealershipFileManager class by end of 5/10. I want the files to be set up
     // pretty and neat. Will write more notes here in the future.
 
-    // 5/10/25 Have to set up getters in Vehicle class.  Will also setup
+    // 5/10/25 Have to set up getters in Vehicle class.  Will also setup some of user interface.
 
 
 

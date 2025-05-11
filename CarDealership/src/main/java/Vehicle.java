@@ -47,4 +47,9 @@ public class Vehicle {
         return price;
     }
 
+    @Override
+    public String toString() {
+        String format = "%-10s|%-6s|%-10s|%-10s|%-8s|%-10s|%-8s|%-10s";
+        return String.format(format, vin, year, make, model, vehicleType, color, odometer, price);
+    }
 }

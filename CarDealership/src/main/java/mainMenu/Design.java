@@ -1,7 +1,9 @@
+package mainMenu;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Design {
-    Scanner scanner = new Scanner(System.in);
     public static void titleNewLineTop () {
         System.out.println("\n════════════════════════════════════════════════════════════════════════");
     }
@@ -159,7 +161,7 @@ public class Design {
         Design.titleNewLineTop();
         System.out.println("Please choose from listed options.");
     }
-    public static String getStringOrMenuAction (Scanner scanner, boolean autoCapitalize, boolean prompt, String promptMessage, String actionSplitByPipe) throws InterruptedException {
+    public static String getStringOrMenuAction (Scanner scanner, boolean autoCapitalize, boolean prompt, String promptMessage, String actionSplitByPipe) throws InterruptedException, IOException {
         boolean keepGoing = true;
         String userInput = null;
 
@@ -188,5 +190,36 @@ public class Design {
             return false;
         }
     }
-
+//    public static boolean confirmList (String inputLong) throws IOException, InterruptedException {
+//        Scanner scanner = new Scanner(System.in);
+//        String [] list = inputLong.split("\n");
+//        ArrayList<String> menuOptions = new ArrayList<>();
+//        boolean keepGoing = true;
+//        while (keepGoing) {
+//            Design.newLineTop();
+//            System.out.println("You Entered");
+//            for (int i = 0; i < list.length; i++) {
+//                System.out.println(list[i]);
+//            }
+//            System.out.println("Is this correct? (Y) or (N).");
+//            Design.lineBottom();
+//            String confirmInput = getStringOrMenuAction(scanner, true, false, "", "ESSENTIAL");
+//            char confirm = confirmInput.charAt(0);
+//            if (confirm == 'Y') {return true;}
+//            if (confirm == 'N') {
+//                Design.newLineTop();
+//                System.out.println("Select which part you'd like to change. Enter a corresponding number or the entry item.");
+//                int i = 0;
+//                for (i = 0; i < list.length; i++) {
+//                    System.out.println("(" + i + ") " + list[i]);
+//                    menuOptions.add("(" + i + ") " + list[i]);
+//                }
+//                System.out.println("(" + (i += 1) + ") Nothing, it looks good.");
+//                String changeList = getStringOrMenuAction(scanner, true, false, "", "ESSENTIAL");
+//                for (String item : menuOptions) {
+//                    if (item.contains(changeList))
+//                }
+//            }
+//        }
+//    }
 }
