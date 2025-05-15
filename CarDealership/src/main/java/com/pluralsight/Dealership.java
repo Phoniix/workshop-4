@@ -1,3 +1,5 @@
+package com.pluralsight;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -81,7 +83,9 @@ public class Dealership {
 
     public ArrayList<Vehicle> getAllVehicles (int dealerID) throws IOException, ParseException {
         this.INVENTORY.clear();
-        ArrayList<Vehicle> currentInventory = DealershipFileManager.getDealership(dealerID);
+        DealershipFileManager loadInventory = new DealershipFileManager(dealerID);
+        ArrayList<Vehicle> currentInventory = loadInventory.getDealerInventory();
+
         for (Vehicle vehicle : currentInventory) {
             this.INVENTORY.add(vehicle);
         }

@@ -1,3 +1,6 @@
+package com.pluralsight;
+
+import com.pluralsight.Dealership;
 import java.io.*;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -12,10 +15,11 @@ public class DealershipFileManager {
 
     public DealershipFileManager(int dealerID) {
         this.dealerID = dealerID;
+        this.currentDealer = new Dealership(this.dealerName, this.getDealerAddress(), this.dealerPhone);
     }
 
     public ArrayList<Vehicle> getDealership (int dealerID) throws  IOException, ParseException {
-        ArrayList<Vehicle> allVehicles = new ArrayList<>();
+        ArrayList<Vehicle> allVehicles = new ArrayList<Vehicle>();
         String dealerLine = null;
         String vehicleLine = null;
         int lineCounter = 0;
@@ -91,6 +95,14 @@ public class DealershipFileManager {
 
     public String getDealerAddress() {
         return dealerAddress;
+    }
+
+    public String getDealerPhone() {
+        return dealerPhone;
+    }
+
+    public Dealership getCurrentDealer() {
+        return currentDealer;
     }
 
     public ArrayList<Vehicle> getDealerInventory() {

@@ -1,0 +1,106 @@
+DEALER_ID|DEALER_NAME|DEALER_ADDRESS|PHONE_NUMBER
+VIN|YEAR|MAKE|MODEL|TYPE|COLOR|MILEAGE|PRICE
+
+1|testDealership|123 com.pluralsight.design_and_ui.Main Street|(123)456-7890
+|INVENTORY_START|
+37846|2001|Ford|Ranger|truck|Yellow|172544|1995.00
+44901|2012|Honda|Civic|SUV|Gray|103221|6995.00
+29384|2010|Toyota|Camry|sedan|White|85312|8499.00
+18765|2015|Chevrolet|Malibu|sedan|Black|47200|10995.00
+56482|2018|Nissan|Altima|sedan|Blue|38900|12995.00
+31245|2005|Jeep|Liberty|SUV|Green|154321|4995.00
+98761|2016|Ford|Focus|hatchback|Silver|60123|8995.00
+43129|2017|Kia|Sorento|SUV|Maroon|44321|13995.00
+74231|2014|Hyundai|Sonata|sedan|Gray|78234|9995.00
+21834|2011|Mazda|CX-5|SUV|Blue|92345|9495.00
+66478|2009|Subaru|Outback|wagon|Green|132478|7495.00
+57483|2008|Dodge|Ram 1500|truck|Red|147892|8995.00
+31289|2007|Chevrolet|Tahoe|SUV|Black|165210|7995.00
+83219|2013|Volkswagen|Jetta|sedan|White|84563|8495.00
+47382|2019|Toyota|RAV4|SUV|Silver|23450|18995.00
+39274|2020|Honda|Accord|sedan|Blue|17890|21495.00
+62478|2006|Ford|F-150|truck|Blue|183654|5995.00
+75319|2015|Jeep|Cherokee|SUV|Gray|66892|11995.00
+62847|2021|Tesla|Model 3|sedan|Black|15230|35995.00
+|INVENTORY_END|
+2|AutoHouse Motors|456 Elm Street|(987)654-3210
+|INVENTORY_START|
+81345|2004|Chevrolet|TrailBlazer|SUV|Silver|142380|3995.00
+47291|2013|Ford|Fusion|sedan|White|80542|8495.00
+91024|2011|Nissan|Titan|truck|Blue|126004|10495.00
+68213|2007|Honda|CR-V|SUV|Green|113240|6495.00
+29834|2018|Toyota|Corolla|sedan|Gray|44231|12995.00
+71629|2022|Kia|Telluride|SUV|Black|11234|37995.00
+30985|2009|Dodge|Charger|sedan|Red|99320|7495.00
+84710|2015|Ram|1500|truck|White|58234|16495.00
+43901|2017|Subaru|Forester|SUV|Blue|50321|14495.00
+19284|2019|Hyundai|Elantra|sedan|Silver|22190|15995.00
+63421|2006|GMC|Sierra 1500|truck|Green|153621|6995.00
+21897|2020|Mazda|Mazda3|sedan|Gray|16345|18995.00
+76531|2016|Volkswagen|Passat|sedan|Black|46210|9995.00
+38476|2012|Jeep|Patriot|SUV|Red|87345|5995.00
+51462|2014|Chevrolet|Equinox|SUV|White|68412|9495.00
+92817|2010|Ford|Escape|SUV|Blue|106783|6995.00
+71923|2013|Nissan|Frontier|truck|Silver|97432|9995.00
+84652|2015|Toyota|Avalon|sedan|Black|52310|11995.00
+58219|2011|Honda|Pilot|SUV|Maroon|98721|8495.00
+49832|2021|Tesla|Model Y|SUV|White|13400|43995.00
+123456|1234|make|model|type|color|123456|1234.56
+|INVENTORY_END|
+123456|1234|make|model|type|color|123456|1234.56
+123456|1234|make|model|type|color|123456|1234.56
+3|Highway Auto Group|789 Sunset Blvd|(555)123-9876
+|INVENTORY_START|
+70238|2003|Ford|Escape|SUV|Blue|168230|3495.00
+19374|2014|Chevrolet|Cruze|sedan|Gray|73245|7495.00
+87412|2008|Toyota|Tacoma|truck|Red|142890|9495.00
+61834|2017|Honda|Fit|hatchback|Silver|38342|9995.00
+21094|2021|Hyundai|Kona|SUV|Orange|12789|21495.00
+55981|2015|Nissan|Murano|SUV|Black|60213|12995.00
+34821|2010|Mazda|Mazda6|sedan|White|95410|6895.00
+70892|2019|Ford|Edge|SUV|Gray|30345|17995.00
+91234|2012|Jeep|Compass|SUV|Green|111923|5995.00
+67284|2006|GMC|Canyon|truck|Blue|173459|6995.00
+32748|2020|Volkswagen|Golf|hatchback|Red|18742|20995.00
+14983|2009|Kia|Sportage|SUV|Silver|122345|5695.00
+28671|2013|Dodge|Journey|SUV|White|80342|7495.00
+76432|2016|Chevrolet|Impala|sedan|Blue|48921|8995.00
+47391|2018|Subaru|Crosstrek|SUV|Green|33480|15995.00
+62317|2011|Ram|Dakota|truck|Black|137345|8495.00
+58203|2022|Toyota|Prius|sedan|Silver|9450|23995.00
+80192|2015|Honda|Odyssey|minivan|Gray|68312|14495.00
+93728|2007|Nissan|Xterra|SUV|Red|147230|5895.00
+51874|2019|Tesla|Model S|sedan|Black|22430|42995.00
+|INVENTORY_END|
+4|Route 66 Autos|1010 Desert Way|(800)456-1212
+|INVENTORY_START|
+61429|2013|Chevrolet|Traverse|SUV|White|84532|8995.00
+73219|2010|Toyota|Highlander|SUV|Silver|103784|8495.00
+42891|2017|Hyundai|Accent|sedan|Blue|45623|8995.00
+39578|2008|Ford|Expedition|SUV|Black|156430|6495.00
+98431|2021|Nissan|Versa|sedan|Gray|17234|17995.00
+27193|2012|Dodge|Durango|SUV|Red|98453|8495.00
+70124|2016|Mazda|CX-9|SUV|Maroon|65432|13495.00
+81374|2014|Honda|Ridgeline|truck|Silver|78321|13995.00
+26531|2011|Kia|Soul|hatchback|Green|95400|6295.00
+39821|2018|Subaru|Impreza|sedan|White|32100|14995.00
+71235|2007|GMC|Envoy|SUV|Blue|148950|5495.00
+87923|2015|Ram|2500|truck|Black|63789|22495.00
+10482|2009|Volkswagen|Beetle|sedan|Red|87312|5995.00
+43628|2013|Toyota|Tundra|truck|Gray|90231|15495.00
+51296|2019|Chevrolet|Spark|hatchback|Blue|23410|11995.00
+32819|2006|Ford|Freestar|minivan|Green|162400|3995.00
+65329|2020|Tesla|Model X|SUV|White|19450|49995.00
+79430|2011|Honda|Element|SUV|Orange|111903|6995.00
+21897|2016|Jeep|Renegade|SUV|Yellow|59213|9995.00
+61483|2014|Nissan|Altima|sedan|Silver|72341|8495.00
+|INVENTORY_END|
+5|The New One|123 Main Street Dallas, Tx|(123) 456-7890
+|INVENTORY_START|
+123456|1234|make|model|type|color|123456|1234.56
+|INVENTORY_END|
+6|New|123 Main Street|(123) 456-7890
+|INVENTORY_START|
+123456|1234|Model|Make|Type|Color|123456|1234.56
+123456|1234|Make|Model|Type|Color|123456|12345.67
+123456|1234|Make|Mod3l|Type|Color|123456|12345.67

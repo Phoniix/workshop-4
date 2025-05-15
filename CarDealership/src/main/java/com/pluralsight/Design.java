@@ -1,4 +1,4 @@
-package mainMenu;
+package com.pluralsight;
 
 import java.io.IOException;
 import java.util.Scanner;
