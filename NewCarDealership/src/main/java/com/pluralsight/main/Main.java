@@ -1,7 +1,8 @@
-package com.pluralsight.design_and_ui;
+package com.pluralsight.main;
 
 import com.pluralsight.dealership.Dealership;
 import com.pluralsight.dealership.DealershipFileManager;
+import com.pluralsight.dealership.dealershipUI.MenuReference;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -21,7 +22,7 @@ public class Main {
                 currentDealer = DealershipFileManager.loadDealership(scanner);
                 function = MenuReference.MAIN_MENU.getMenuCode();
             }
-            if (function != 'X' || function != 'L' || function!= 'R') {
+            if (function != 'X' || function != 'L') {
                 function = MenuReference.fromCodeReturnAction(function, "ALL", currentDealer);
             }
             if (function == MenuReference.EXIT_APP.getMenuCode()) {

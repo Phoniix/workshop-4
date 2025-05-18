@@ -1,26 +1,28 @@
 package com.pluralsight;
 
 import com.pluralsight.dealership.Dealership;
+import com.pluralsight.dealership.DealershipFileManager;
+import com.pluralsight.dealership.contracts.SalesContract;
+import com.pluralsight.design.Design;
 import com.pluralsight.roadVehicle.Vehicle;
 
 import java.io.*;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class test {
 
-    public static void main(String[] args) throws IOException {
-        int dealerID = 1;
-        ArrayList<Vehicle> invenotry = new ArrayList<>();
-        Dealership currentDealer = new Dealership(dealerID, "test", "test", "test", invenotry);
-        Vehicle vehicle = new Vehicle(10112, 1993, "Ford", "Explorer", "SUV", "Red", 525123, 995.00);
-        removeVehicleFromFile(currentDealer, vehicle);
-
-
-
+    public static void main(String[] args) throws IOException, ParseException {
+        DealershipFileManager dealer = new DealershipFileManager(1);
+        Dealership currentDealer = dealer.getDealership(1);
+        Vehicle vehicle = new Vehicle(123, 1234, "make", "model", "car", "red", 1234, 1234);
+        SalesContract salesContract = new SalesContract("123", "123", "123", vehicle, false, 1234, 12);
+        salesContract = salesContract.makeSale(currentDealer);
+        System.out.println(salesContract.toString());
     }
-
-
-
 
     public static void removeVehicleFromFile (Dealership currentDealer, Vehicle remVehicle) {
     final String FILE_PATH = "allInventories1.csv";
@@ -83,5 +85,51 @@ public class test {
             System.out.println("No File");
         }
     }
+    public static HashMap<String, Object> confirmInputs (Scanner scanner, HashMap<String, Object> actionInput, boolean posInt, boolean posDouble, boolean autoCap) {
+        boolean keepGoing = true;
+        int reset = 0;
+        int i = reset;
+        while (keepGoing) {
+            i = reset;
+            Design.titleNewLineTop();
+            Design.message("Is this info correct? Yes or no? (Y) or (N).", 0);
+            actionInput.entrySet().stream()
+                    .forEach(AI -> System.out.println
+                            (Design.autoCap(AI.getKey()) + " Entered: " + (AI.getValue())));
+            Design.titleLineBottom();
+
+            if (Design.getYesNo(scanner, false, "")) {
+                Design.systemMessage("Thank you for confirming", true);
+                return actionInput;
+            } else {
+                Design.titleNewLineTop();
+                Design.message("Select which part to change.", 2);
+                for (Map.Entry<String, Object> AI : actionInput.entrySet()) {
+                    System.out.println(Design.autoCap("(" + (i + 1) + ") " + AI.getKey()) + " Entered: " + (AI.getValue()));
+                    i++;
+                } i = reset;
+                Design.titleLineBottom();
+                int fixNum = Design.getIntFromPrompt(scanner, false, "", true);
+
+                boolean found = false;
+                String type = null;
+                for (Map.Entry<String, Object> AI : actionInput.entrySet()) {
+                    if (i + 1 == fixNum) {
+                        if (AI.getValue() instanceof Integer)
+                            actionInput.put(AI.getKey(), Design.getIntFromPrompt(scanner, true, "Please enter " + AI.getKey() + ".", posInt));
+                        if (AI.getValue() instanceof Double)
+                            actionInput.put(AI.getKey(), Design.getDoubleFromPrompt(scanner, true, "Please enter " + AI.getKey() + ".", posDouble));
+                        if (AI.getValue() instanceof String)
+                            actionInput.put(AI.getKey(), Design.getNounPrompt(scanner, true, "Please enter " + AI.getKey() + ".", autoCap ));
+                    }
+                    i++;
+                }
+            }
+        }
+        return null;
+    }
+
 
 }
+
+

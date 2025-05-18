@@ -3,6 +3,20 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="C:\Users\phoni\pluralsight\workshop-4\CarDealership\allInventories.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="|" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="C:\Users\phoni\pluralsight\workshop-4\CarDealership\dealershipPuller.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="|" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\allInventories.csv">
           <value>
             <Attribute>

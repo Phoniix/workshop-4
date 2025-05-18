@@ -1,8 +1,8 @@
 package com.pluralsight.dealership;
 
 import com.pluralsight.roadVehicle.Vehicle;
-import com.pluralsight.design_and_ui.Design;
-import com.pluralsight.design_and_ui.MenuReference;
+import com.pluralsight.design.Design;
+import com.pluralsight.dealership.dealershipUI.MenuReference;
 
 import java.io.*;
 import java.text.ParseException;

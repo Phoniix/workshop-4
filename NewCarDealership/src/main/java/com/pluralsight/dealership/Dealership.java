@@ -1,7 +1,7 @@
 package com.pluralsight.dealership;
 
-import com.pluralsight.design_and_ui.Design;
-import com.pluralsight.design_and_ui.MenuReference;
+import com.pluralsight.design.Design;
+import com.pluralsight.dealership.dealershipUI.MenuReference;
 import com.pluralsight.roadVehicle.Vehicle;
 
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class Dealership extends DealershipFileManager {
         this.NAME = name;
         this.ADDRESS = address;
         this.PHONE_NUMBER = phoneNumber;
-        this.INVENTORY = new ArrayList<Vehicle>();
+        this.INVENTORY = inventory;
     }
 
     //Getters // ------------------------------------------------------------------------------------------------------

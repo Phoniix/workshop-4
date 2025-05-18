@@ -1,10 +1,9 @@
-package com.pluralsight.design_and_ui;
+package com.pluralsight.dealership.dealershipUI;
 
 import com.pluralsight.dealership.Dealership;
 import com.pluralsight.dealership.DealershipFileManager;
 
 import java.io.IOException;
-import java.sql.PseudoColumnUsage;
 import java.text.ParseException;
 import java.util.Scanner;
 
