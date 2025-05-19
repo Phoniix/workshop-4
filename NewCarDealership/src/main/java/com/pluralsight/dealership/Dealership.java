@@ -7,9 +7,11 @@ import com.pluralsight.roadVehicle.Vehicle;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
-public class Dealership extends DealershipFileManager {
+public class Dealership extends Vehicle {
+    private int ID;
     private String NAME;
     private String ADDRESS;
     private String PHONE_NUMBER;
@@ -17,14 +19,21 @@ public class Dealership extends DealershipFileManager {
 
     // Constructor // -------------------------------------------------------------------------------------------------
     public Dealership(int dealerID, String name, String address, String phoneNumber, ArrayList<Vehicle> inventory) {
-        super(dealerID);
+        this.ID = dealerID;
         this.NAME = name;
         this.ADDRESS = address;
         this.PHONE_NUMBER = phoneNumber;
         this.INVENTORY = inventory;
     }
 
+    public Dealership() {
+    }
+
     //Getters // ------------------------------------------------------------------------------------------------------
+
+    public int getID() {
+        return ID;
+    }
     public String getNAME() {
         return NAME;
     }
@@ -193,34 +202,38 @@ public class Dealership extends DealershipFileManager {
                 "What service do you need next?", "DEALER_ACTION|ESSENTIAL");
     }
     public static char processAddNewVehicle (Scanner scanner, Dealership currentDealer) throws IOException {
-        int vin = Design.getIntFromPrompt(scanner, true, "Please enter vin of the vehicle.", true);
-        int year = Design.getIntFromPrompt(scanner, true, "Please enter year of the vehicle.", true);
-        String make = Design.getNounPrompt(scanner, true, "Please enter make (brand) of the vehicle.", true);
-        String model = Design.getNounPrompt(scanner, true, "Please enter model of the vehicle.", true);
-        String type = Design.getNounPrompt(scanner, true, "Please enter vehicle type.\n" +
-                "(EX: SEDAN, COUPE, MINIVAN, ETC.", true);
-        String color = Design.getNounPrompt(scanner, true, "Please enter color of the vehicle", true);
-        int odometer = Design.getIntFromPrompt(scanner, true, "Please enter the vehicle's odometer reading in whole numbers.", true);
-        double price = Design.getDoubleFromPrompt(scanner, true, "Please enter the original price of the vehicle.", true);
+        DealershipFileManager dealerWriter = new DealershipFileManager(currentDealer.getID());
+        LinkedHashMap<String, Object> inputs = new LinkedHashMap<>();
+        int vin; int year; String make; String model; String color; String type; int odometer; double price;
+        inputs.put("VIN", vin = Design.getIntFromPrompt(scanner, true, "Please enter vin of the vehicle.", true));
+        inputs.put("YEAR", year = Design.getIntFromPrompt(scanner, true, "Please enter year of the vehicle.", true));
+        inputs.put("MAKE", make = Design.getNounPrompt(scanner, true, "Please enter make (brand) of the vehicle.", true));
+        inputs.put("MODEL", model = Design.getNounPrompt(scanner, true, "Please enter model of the vehicle", true));
+        inputs.put("TYPE", type = Design.getNounPrompt(scanner, true, "Please enter vehicle type.\n" +
+                "(EX: SEDAN, COUPE, MINIVAN, ETC.", true));
+        inputs.put("COLOR", color = Design.getNounPrompt(scanner, true, "Please enter color of the vehicle", true));
+        inputs.put("ODOMETER", odometer = Design.getIntFromPrompt(scanner, true, "Please enter the vehicle's odometer reading in whole numbers.", true));
+        inputs.put("PRICE", price = Design.getDoubleFromPrompt(scanner, true, "Please enter the original price of the vehicle.", true));
+        inputs = Design.confirmInputs(scanner, inputs, true, true, true);
         Vehicle newVehicle = new Vehicle(vin, year, make, model, type, color, odometer, price);
         currentDealer.addVehicle(newVehicle);
-        currentDealer.writeVehicleToFile(currentDealer, newVehicle);
+        dealerWriter.writeVehicleToFile(currentDealer, newVehicle);
         return MenuReference.screenChange(scanner, "Vehicle successfully added to file.\n" +
                 "What next?", "DEALER_ACTION|DEALER_MODIFY|ESSENTIAL");
     }
     public static char processRemoveVehicle (Scanner scanner, Dealership currentDealer) {
-        int vin = Design.getIntFromPrompt(scanner, true, "Please enter vin of the vehicle.", true);
-        int year = Design.getIntFromPrompt(scanner, true, "Please enter year of the vehicle.", true);
-        String make = Design.getNounPrompt(scanner, true, "Please enter make (brand) of the vehicle.", true);
-        String model = Design.getNounPrompt(scanner, true, "Please enter model of the vehicle.", true);
-        String type = Design.getNounPrompt(scanner, true, "Please enter vehicle type.\n" +
-                "(EX: SEDAN, COUPE, MINIVAN, ETC.", true);
-        String color = Design.getNounPrompt(scanner, true, "Please enter color of the vehicle", true);
-        int odometer = Design.getIntFromPrompt(scanner, true, "Please enter the vehicle's odometer reading in whole numbers.", true);
-        double price = Design.getDoubleFromPrompt(scanner, true, "Please enter the original price of the vehicle.", true);
-        Vehicle remVehicle = new Vehicle(vin, year, make, model, type, color, odometer, price);
+        DealershipFileManager dealerWriter = new DealershipFileManager(currentDealer);
+        LinkedHashMap<String, Object> inputs = new LinkedHashMap<>();
+        int vin = 0;
+        Vehicle remVehicle = new Vehicle();
+
+        inputs.put("VIN", vin = Design.getIntFromPrompt(scanner, true,
+                "Please enter vin of the vehicle.", true));
+        inputs.put("!VEHICLE", remVehicle = remVehicle.getVehicle(vin, currentDealer));
+        inputs = Design.confirmInputs(scanner, inputs, true, true, true);
+        remVehicle = remVehicle.getVehicle(vin, currentDealer);
         currentDealer.removeVehicle(remVehicle);
-        currentDealer.removeVehicleFromFile(currentDealer, remVehicle);
+        dealerWriter.removeVehicleFromFile(currentDealer, remVehicle);
         return MenuReference.screenChange(scanner, "Vehicle successfully removed from file.\n" +
                 "What next?", "DEALER_ACTION|DEALER_MODIFY|ESSENTIAL");
     }

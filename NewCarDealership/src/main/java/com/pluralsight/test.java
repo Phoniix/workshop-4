@@ -16,12 +16,7 @@ import java.util.Scanner;
 public class test {
 
     public static void main(String[] args) throws IOException, ParseException {
-        DealershipFileManager dealer = new DealershipFileManager(1);
-        Dealership currentDealer = dealer.getDealership(1);
-        Vehicle vehicle = new Vehicle(123, 1234, "make", "model", "car", "red", 1234, 1234);
-        SalesContract salesContract = new SalesContract("123", "123", "123", vehicle, false, 1234, 12);
-        salesContract = salesContract.makeSale(currentDealer);
-        System.out.println(salesContract.toString());
+
     }
 
     public static void removeVehicleFromFile (Dealership currentDealer, Vehicle remVehicle) {
@@ -43,7 +38,7 @@ public class test {
                     continue;
                 }
                 parts = readLine.split("\\|");
-                if (readLine.startsWith(currentDealer.getDealerID() + "|") && Integer.parseInt(parts[0]) == currentDealer.getDealerID() && parts.length == 4) {
+                if (readLine.startsWith(currentDealer.getID() + "|") && Integer.parseInt(parts[0]) == currentDealer.getID() && parts.length == 4) {
                     lines.add(readLine);
                     foundDealer = true;
                     System.out.println("Found dealer: " + readLine);

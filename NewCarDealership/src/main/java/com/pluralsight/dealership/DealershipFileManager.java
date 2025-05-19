@@ -22,7 +22,6 @@ public class DealershipFileManager {
     public DealershipFileManager(int dealerID) {
         this.dealerID = dealerID;
     }
-
     // OL Constructor // ----------------------------------------------------------------------------------------------
     public DealershipFileManager (Dealership currentDealer) {
         this.currentDealer = currentDealer;
@@ -136,7 +135,6 @@ public class DealershipFileManager {
                     if (currentDealership.getINVENTORY().size() < 1) {
                         Design.continueEnter(scanner, true, "You are a new dealership. Please add a vehicle to be able to use functions.");
                         MenuReference.manualCallAction(MenuReference.ADD_NEW_VEHICLE, currentDealership);
-                        MenuReference.manualCallAction(MenuReference.START_APP, currentDealership);
                         return currentDealership;
                     }
 
@@ -175,7 +173,7 @@ public class DealershipFileManager {
                 lines.add(readLine);
                 if (readLine.equals("DEALER_ID|DEALER_NAME|DEALER_ADDRESS|PHONE_NUMBER")) continue;
                 parts = readLine.split("\\|");
-                if (readLine.startsWith(currentDealer.getDealerID() + "|") && Integer.parseInt(parts[0]) == currentDealer.getDealerID() && parts.length == 4) {
+                if (readLine.startsWith(currentDealer.getID() + "|") && Integer.parseInt(parts[0]) == currentDealer.getID() && parts.length == 4) {
                     foundDealer = true;
                     System.out.println("Found dealer: " + readLine);
                 }
@@ -224,7 +222,7 @@ public class DealershipFileManager {
                     continue;
                 }
                 parts = readLine.split("\\|");
-                if (readLine.startsWith(currentDealer.getDealerID() + "|") && Integer.parseInt(parts[0]) == currentDealer.getDealerID() && parts.length == 4) {
+                if (readLine.startsWith(currentDealer.getID() + "|") && Integer.parseInt(parts[0]) == currentDealer.getID() && parts.length == 4) {
                     lines.add(readLine);
                     foundDealer = true;
                     System.out.println("Found dealer: " + readLine);
@@ -271,15 +269,6 @@ public class DealershipFileManager {
     // Getters // -----------------------------------------------------------------------------------------------------
     public int getDealerID() {
         return dealerID;
-    }
-    public String getDealerName() {
-        return dealerName;
-    }
-    public String getDealerAddress() {
-        return dealerAddress;
-    }
-    public String getDealerPhone() {
-        return dealerPhone;
     }
     public Dealership getCurrentDealer() {
         return currentDealer;

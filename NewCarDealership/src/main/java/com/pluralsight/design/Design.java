@@ -1,12 +1,23 @@
 package com.pluralsight.design;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import org.apache.commons.io.input.ReversedLinesFileReader;
+
 
 @SuppressWarnings("unused")
 
 public class Design {
+    private final String FILE_PATH = "logs.txt";
+
+
     //Styles //
     public static void titleNewLineTop () {
         System.out.println("\n════════════════════════════════════════════════════════════════════════");
@@ -131,6 +142,35 @@ public class Design {
     }
 
     // Back End //
+//    private String activityLogger (Object action, String message) {
+//
+//    }
+    public static Charset utf () {
+        return StandardCharsets.UTF_8;
+    }
+    public static boolean fileBug1o (String fileName, int lineCount) throws IOException {
+        List<String> snailTrail = new ArrayList<>();
+        boolean missing = false;
+        int counter = 0;
+        try (ReversedLinesFileReader buggy = new ReversedLinesFileReader((new File(fileName)),lineCount, utf());
+             BufferedWriter fixIt = new BufferedWriter(new FileWriter(fileName, false))) {
+            String lines = null;
+            while ((lines = buggy.readLine()) != null && counter <= lineCount) {
+                snailTrail.add(lines);
+                counter++;
+                missing = lines.isEmpty() ? true : false;
+            } if (missing) {
+                for (String write : snailTrail) {
+                    fixIt.write(lines);
+                    fixIt.newLine();
+                }
+                lineCount = Math.max(snailTrail.size() - lineCount, 0); // 0 avoids out of bounds error
+            }
+        } catch (IOException e) {
+            System.out.println("Failure at: " + lineCount + "in" + fileName);
+        }
+        return missing;
+    }
 
 
     // User Input //

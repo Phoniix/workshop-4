@@ -3,44 +3,43 @@ package com.pluralsight.dealership.contracts;
 import com.pluralsight.dealership.Dealership;
 import com.pluralsight.roadVehicle.Vehicle;
 
-public abstract class Contract {
-    protected String date = null;
-    protected String customerName = null;
-    protected String customerEmail = null;
-    protected Vehicle vehicle = null;
-    protected boolean sold = false;
-    protected double totalPrice = 0;
-    protected int numberOfPayments = 0;
-    protected double monthlyPayment = 0;
+public abstract class Contract extends Dealership {
+    protected String DATE = null;
+    protected String CUSTOMER_NAME = null;
+    protected String CUSTOMER_EMAIL = null;
+    protected Vehicle VEHICLE = null;
+    protected boolean SOLD = false;
+    protected double TOTAL_PRICE = 0;
+    protected int NUMBER_OF_PAYMENTS = 0;
+    protected double MONTHLY_PAYMENT = 0;
 
     protected Contract(String date, String customerName, String customerEmail, Vehicle vehicle, boolean sold, int numberOfPayments) {
-        this.date = date;
-        this.customerName = customerName;
-        this.customerEmail = customerEmail;
-        this.vehicle = vehicle;
-        this.sold = sold;
-        this.totalPrice = getTotalPrice();
-        this.numberOfPayments = numberOfPayments;
-        this.monthlyPayment = this.totalPrice / this.numberOfPayments;
+        this.DATE = date;
+        this.CUSTOMER_NAME = customerName;
+        this.CUSTOMER_EMAIL = customerEmail;
+        this.VEHICLE = vehicle;
+        this.SOLD = sold;
+        this.TOTAL_PRICE = getTotalPrice();
+        this.NUMBER_OF_PAYMENTS = numberOfPayments;
+        this.MONTHLY_PAYMENT = this.TOTAL_PRICE / this.NUMBER_OF_PAYMENTS;
     }
 
-    protected String getDate() {
-        return this.date;
+    protected String getdate() {
+        return this.DATE;
     };
     protected String getCustomerName() {
-        return this.customerName;
+        return this.CUSTOMER_NAME;
     };
     protected String getCustomerEmail() {
-        return this.customerEmail;
+        return this.CUSTOMER_EMAIL;
     };
     protected double getMonthlyPayment() {
-        return this.totalPrice / this.numberOfPayments;
+        return this.TOTAL_PRICE / this.NUMBER_OF_PAYMENTS;
     }
 
     protected abstract boolean getSoldStatus ();
     protected abstract double getTotalPrice();
 
-    protected abstract Vehicle getVehicle(int vin, Dealership currentDealer);
 
 
 }

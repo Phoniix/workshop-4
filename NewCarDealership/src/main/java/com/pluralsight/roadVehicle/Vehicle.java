@@ -1,5 +1,7 @@
 package com.pluralsight.roadVehicle;
 
+import com.pluralsight.dealership.Dealership;
+
 public class Vehicle {
 
     private final int vin;
@@ -22,6 +24,9 @@ public class Vehicle {
         this.odometer = odometer;
         this.price = price;
         }
+
+    public Vehicle() {
+    }
 
     // Getters // Don't need setters because vehicle info will not change one input into system. ----------------------
     public int getVin() {
@@ -47,6 +52,14 @@ public class Vehicle {
     }
     public double getPrice() {
         return price;
+    }
+    public Vehicle getVehicle(int vin, Dealership currentDealer) {
+        boolean found = false;
+        for (Vehicle car : currentDealer.getINVENTORY()) {
+            if (car.getVin() == vin) {
+                return car;
+            }
+        } if (!found) System.out.println("Invalid Vin"); return null;
     }
 
     @Override

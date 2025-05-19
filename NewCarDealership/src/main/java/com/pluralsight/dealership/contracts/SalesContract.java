@@ -7,73 +7,55 @@ import com.pluralsight.roadVehicle.Vehicle;
 import java.util.*;
 
 public class SalesContract extends Contract {
-    private static Scanner scanner = new Scanner(System.in);
-    private final double SALES_TAX = this.vehicle.getPrice() * .05;
+    private static Scanner SCANNER = new Scanner(System.in);
+    private final double SALES_TAX = this.VEHICLE.getPrice() * .05;
     private final double RECORDING_FEE = 100.00;
-    private final double PROCESSING_FEE = this.vehicle.getPrice() < 10000 ? 295.00 : 495.00;
+    private final double PROCESSING_FEE = this.VEHICLE.getPrice() < 10000 ? 295.00 : 495.00;
 
 
-    public SalesContract(String date, String customerName, String customerEmail, Vehicle soldVehicle, boolean sold, double totalPrice, int numberOfPayments) {
+    public SalesContract(String date, String customerName, String customerEmail, Vehicle soldVehicle, boolean sold, int numberOfPayments) {
         super(date, customerName, customerEmail, soldVehicle, sold, numberOfPayments);
-        this.totalPrice = getTotalPrice();
+        this.TOTAL_PRICE = getTotalPrice();
     }
 
     protected boolean getSoldStatus() {
-        return this.sold;
+        return this.SOLD;
     }
     protected double getTotalPrice() {
-        this.totalPrice = this.vehicle.getPrice() + SALES_TAX + RECORDING_FEE + PROCESSING_FEE;
-        return this.totalPrice;
+        return this.VEHICLE.getPrice() + SALES_TAX + RECORDING_FEE + PROCESSING_FEE;
     }
 
-
-    protected Vehicle getVehicle(int vin, Dealership currentDealer) {
-        boolean found = false;
-        for (Vehicle car : currentDealer.getINVENTORY()) {
-            if (car.getVin() == vin) {
-                return car;
-            }
-        } if (!found) System.out.println("Invalid Vin"); return null;
-    }
 
     public SalesContract makeSale(Dealership currentDealer) {
         int vin = 0;
         LinkedHashMap<String, Object> inputs = new LinkedHashMap<>();
-        inputs.put("!date", this.date = Design.getDateStamp());
-        inputs.put("client name", this.customerName = Design.getNounPrompt(scanner, true, "Please enter client name.", true));
-        inputs.put("client email", this.customerEmail = Design.getEmailPrompt(scanner, true, "Please enter client email."));
-        inputs.put("vin", vin = Design.getIntFromPrompt(scanner, true, "Please enter the vin of vehicle to load.", true));
-        inputs.put("!vehicle", this.vehicle = getVehicle(vin, currentDealer));
-        inputs.put("!sale price", this.totalPrice);
-        inputs.put("number of payments", this.numberOfPayments = Design.getIntWithMaxMin(scanner, true,
-                "Vehicle Price: $" + this.vehicle.getPrice() + "\n" +
+        inputs.put("!date", this.DATE = Design.getDateStamp());
+        inputs.put("client name", this.CUSTOMER_NAME = Design.getNounPrompt(SCANNER, true, "Please enter client name.", true));
+        inputs.put("client email", this.CUSTOMER_EMAIL = Design.getEmailPrompt(SCANNER, true, "Please enter client email."));
+        inputs.put("vin", vin = Design.getIntFromPrompt(SCANNER, true, "Please enter the vin of vehicle to load.", true));
+        inputs.put("!vehicle", this.VEHICLE = getVehicle(vin, currentDealer));
+        inputs.put("!sale price", this.TOTAL_PRICE);
+        inputs.put("number of payments", this.NUMBER_OF_PAYMENTS = Design.getIntWithMaxMin(SCANNER, true,
+                "Vehicle Price: $" + this.VEHICLE.getPrice() + "\n" +
                         "Recording Fee: $" + this.RECORDING_FEE + "\n" +
                         "Processing Fee: $" + this.PROCESSING_FEE + "\n" +
                         "Sales Tax: $" + this.SALES_TAX + "\n\n" +
-                        "Total Sale Price: $" + this.totalPrice + "\n\n" +
+                        "Total Sale Price: $" + this.TOTAL_PRICE + "\n\n" +
                         "Is client financing?\n" +
                         "If Yes, enter how many payments (12 * years to pay). If no enter '1",
                 true, 1, 84));
-        inputs = Design.confirmInputs(scanner, inputs, true, true, true);
+        inputs = Design.confirmInputs(SCANNER, inputs, true, true, true);
 
 
-        return new SalesContract(this.date, this.customerName, this.customerEmail, this.vehicle, true, this.totalPrice, this.numberOfPayments);
+        return new SalesContract(this.DATE, this.CUSTOMER_NAME, this.CUSTOMER_EMAIL, this.VEHICLE, true, this.NUMBER_OF_PAYMENTS);
     }
 
     @Override
     public String toString() {
-        return "SalesContract{" +
-                "date='" + date + '\'' +
-                ", customerName='" + customerName + '\'' +
-                ", customerEmail='" + customerEmail + '\'' +
-                ", vehicle=" + vehicle +
-                ", sold=" + sold +
-                ", totalPrice=" + totalPrice +
-                ", numberOfPayments=" + numberOfPayments +
-                ", monthlyPayment=" + monthlyPayment +
-                ", PROCESSING_FEE=" + PROCESSING_FEE +
-                ", RECORDING_FEE=" + RECORDING_FEE +
-                ", SALES_TAX=" + SALES_TAX +
-                '}';
+        return "Sale|" + Design.getDateStamp() + "|" + this.CUSTOMER_NAME + "|"
+                + this.CUSTOMER_EMAIL + "|" + this.VEHICLE.getVin() + "|\n"
+                + this.VEHICLE.toString() + "|\n" + this.RECORDING_FEE + "|"
+                + this.PROCESSING_FEE + "|" + this.TOTAL_PRICE + (this.SOLD ? "SOLD" : "AVAILABLE") + "|"
+                + String.format("%.2f", this.MONTHLY_PAYMENT);
     }
 }
